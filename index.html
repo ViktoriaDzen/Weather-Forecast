@@ -18,13 +18,14 @@
     <div class="App">
       <div class="container">
         <div class="weather">
-          <form>
+          <form id="search-form" class="mb-3">
             <div class="row">
               <div class="col-9">
                 <input
                   type="search"
                   placeholder="Enter a city.."
-                  class="form-control search-input"
+                  class="form-control"
+                  id="searchCity"
                 />
               </div>
               <div class="col-3">
@@ -41,8 +42,8 @@
               <div class="col-6">
                 <h1 id="city"></h1>
                 <ul>
+                </li> Last updated: <span id="weather-date"></span>
                   <li id="description">
-                  </li> Last updated at <span id="weather-date"></span>
                   </li>
                   <li >
                     "Humidity: "

@@ -26,6 +26,7 @@ function displayTemperature(response) {
     response.data.wind.speed
   ));
   let date = document.querySelector("#weather-date");
+  console.log(response.data.dt);
   date.innerHTML = formatDate(response.data.dt * 1000);
 }
 
@@ -37,10 +38,11 @@ function find(city) {
   let apiUrlSearch = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrlSearch).then(displayTemperature);
 }
+find("London");
 function searchCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#searchCity");
-  search(cityInput.value);
+  find(cityInput.value);
 }
 
 let form = document.querySelector("#search-form");

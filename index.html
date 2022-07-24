@@ -40,6 +40,7 @@
           <div class="weather-info">
             <div class="row">
               <div class="col-6">
+              
                 <h1 id="city"></h1>
                 <ul>
                   <li>Last updated: <span id="weather-date"></span></li>
@@ -50,14 +51,22 @@
                     ", Wind:"
                     <strong id="wind"> "4.12"  </strong>"km/h"
                   </li>
+                  <div class="clearfix weather-temperature">
+                <img src="#"
+                alt="clear"
+                class="float-left"/>
+              </div>
                 </ul>
               </div>
               <div class="col-6">
                 <div class="temperature-container d-flex justify-content-end">
                   <canvas width="52" height="52"></canvas>
                   <div>
-                    <span id="temperature" class="temperature"></span
-                    ><span class="unit">°C</span>
+                    <span id="temperature" class="temperature"></span>
+                    <span class="unit" >
+                      <a href="#" class="units" id="celsius-link">°C</a>
+                     <a href="#" class="units" id="fahrenheit-link">°F</a>
+                    </span>
                   </div>
                 </div>
               </div>

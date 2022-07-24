@@ -25,6 +25,7 @@ function displayTemperature(response) {
   let windSpeed = (document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   ));
+  celsiusTemperature = Math.round(response.data.main.temp);
   let date = document.querySelector("#weather-date");
   console.log(response.data.dt);
   date.innerHTML = formatDate(response.data.dt * 1000);
@@ -38,7 +39,8 @@ function find(city) {
   let apiUrlSearch = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrlSearch).then(displayTemperature);
 }
-find("London");
+let celsiusTemperature = null;
+
 function searchCity(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#searchCity");
@@ -47,3 +49,23 @@ function searchCity(event) {
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", searchCity);
+
+//here i make units conversion
+function convertToFahrenheit(event) {
+  event.preventDefault();
+  let tempToF = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(tempToF);
+}
+let temperatureElement = document.querySelector("#temperature");
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+function convertToCelsius(event) {
+  event.preventDefault();
+  temperatureElement.innerHTML = celsiusTemperature;
+}
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", convertToCelsius);
+
+find("London");

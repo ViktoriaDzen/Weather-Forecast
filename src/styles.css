@@ -83,3 +83,7 @@ li {
   color: #f65282;
   font-weight: 400;
 }
+
+.WeatherForecastPreview {
+  text-align: center;
+}

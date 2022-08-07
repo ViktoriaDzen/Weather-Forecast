@@ -22,6 +22,24 @@ function formatDate(timeStamp) {
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-2">
+              <div class="WeatherForecastPreview">
+                <div class="forecast-time">${day} </div>
+                <canvas width="38" height="38"></canvas>
+                <div class="forecast-temperature">18°</div>
+              </div>
+            </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
 
 function displayTemperature(response) {
   let temperatureElement = (document.querySelector("#temperature").innerHTML =
@@ -73,3 +91,4 @@ function convertToCelsius(event) {
 celsiusLink.addEventListener("click", convertToCelsius);
 
 find("London");
+displayForecast();

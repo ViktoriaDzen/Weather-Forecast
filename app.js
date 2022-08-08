@@ -1,5 +1,5 @@
 let form = document.querySelector("#search-form");
-let iconElelment = document.querySelector("#icon");
+let iconElement = document.querySelector("#icon");
 let dateElement = document.querySelector("#date");
 let days = document.querySelectorAll(".day-block");
 let temperatureElement = document.querySelector("#temperature");
@@ -30,6 +30,7 @@ function formatDay(timeStamp) {
 }
 function displayForecast(response) {
   let forecast = response.data.daily;
+  console.log(forecast);
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
 
@@ -40,7 +41,12 @@ function displayForecast(response) {
         `<div class="col-2">
               <div class="WeatherForecastPreview">
                 <div class="forecast-time">${formatDay(forecastDay.dt)} </div>
-                <canvas width="38" height="38"></canvas>
+    
+    <img src="http://openweathermap.org/img/wn/${
+      forecastDay.weather[0].icon
+    }@2x.png"
+  alt="" width="78" class="forecastPredict"/>
+                <canvas width="5" height="5"></canvas>
                 <div class="forecast-temperature">${Math.round(
                   forecastDay.temp.day
                 )}°</div>
@@ -74,7 +80,7 @@ function displayTemperature(response) {
   console.log(response.data.dt);
   date.innerHTML = formatDate(response.data.dt * 1000);
   let iconNumber = response.data.weather[0].icon;
-  iconElelment.setAttribute(
+  iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${iconNumber}@2x.png`
   );
